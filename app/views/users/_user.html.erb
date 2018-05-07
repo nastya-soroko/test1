@@ -1,0 +1,17 @@
+<tr id="user-<%= user.id %>">
+  <td><%= link_to user.id, user_path(user) %></td>
+  <td id="first-name"><%= user.first_name %></td>
+  <td id="last-name"><%= user.last_name %></td>
+  <td id="age"><%= user.age %></td>
+  <td>
+    <%= link_to t('.show', :default => t("helpers.links.show")),
+                user_path(user), :class => 'btn btn-default btn-xs' %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_user_path(user), :class => 'btn btn-default btn-xs' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                user_path(user),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-xs btn-danger' %>
+  </td>
+</tr>

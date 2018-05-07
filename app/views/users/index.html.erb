@@ -1,0 +1,27 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_user_path,
+            :class => 'btn btn-primary' %>
+
+<table class="table table-striped users" id='users'>
+  <thead>
+    <tr>
+      <th><%= sortable '_id', model_class.human_attribute_name(:id) %></th>
+      <th><%= sortable 'first_name', model_class.human_attribute_name(:first_name) %></th>
+      <th><%= sortable 'last_name', model_class.human_attribute_name(:last_name) %></th>
+      <th><%= sortable 'age', model_class.human_attribute_name(:age) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>
+
+<div id="infinite-scrolling">
+  <%= paginate @users %>
+</div>
